@@ -15,8 +15,8 @@ public class Category {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE , generator="CATSEQ")
 	@SequenceGenerator(name="CATSEQ", sequenceName="catseq",allocationSize=1)
-	@Column(name="ID")
-	private int id;
+	@Column(name="CATEGORY_ID")
+	private int category_id;
 	
 	@Column(name="NAME")
 	private String name ;
@@ -36,7 +36,7 @@ public class Category {
 
 	public Category(int id, String name, String description) {
 		super();
-		this.id = id;
+		this.category_id = id;
 		this.name = name;
 		this.description = description;
 //		this.createdAt = createdAt;
@@ -44,11 +44,11 @@ public class Category {
 	}
 
 	public int getId() {
-		return id;
+		return category_id;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.category_id = id;
 	}
 
 	public String getName() {
@@ -85,7 +85,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", description=" + description + "]";
+		return "Category [id=" + category_id + ", name=" + name + ", description=" + description + "]";
 	} 
 	
 	
