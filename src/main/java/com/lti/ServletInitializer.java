@@ -1,4 +1,4 @@
-package com.lti.onlineshop;
+package com.lti;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
