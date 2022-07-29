@@ -10,4 +10,5 @@ public interface ProductDao {
 	public Product getProductById(int id);
 	public List<Product> getAllProducts();
 	public List<Product> getProductsByCategory(int category_id);
+	public Product updateProduct(int id,Product p);
 }

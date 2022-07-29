@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -62,6 +63,22 @@ public class ProductController {
 		List<Product> pp =service.getProductsByCategory(category_id);
 		return ResponseHandler.generateResponse("Product By Category", HttpStatus.OK,pp);
 	}
+	
+	
+	@PutMapping("/update-product/{id}")
+	public ResponseEntity<?> updateProduct(@PathVariable int id,@RequestBody Product c)
+	{
+		System.out.println("Inside Controller : "+c);
+		// first get Product by id 
+		Product pp1 =service.getProductById(id);
+		
+		// then update all fields with new object
+		Product pp =service.updateProduct(id, pp1);
+		System.out.println("After Update : "+pp);
+		//Product pp =service.addProduct(c);
+		return ResponseHandler.generateResponse("Product Updated", HttpStatus.OK,pp);
+	}
+	
 	
 	
 	

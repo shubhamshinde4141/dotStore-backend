@@ -77,6 +77,21 @@ public class ProductDaoImpl implements ProductDao {
 
 
 
+	@Override
+	public Product updateProduct(int id, Product p) {
+		// TODO Auto-generated method stub
+		System.out.println(" Inside Dao method");	
+		Product pp = em.merge(p);
+		//em.persist(p);	
+		return pp;
+		
+		
+		
+		
+	}
+
+
+
 	
 
 }
