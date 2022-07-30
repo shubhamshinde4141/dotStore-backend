@@ -21,21 +21,17 @@ public class RetailerDaoImpl implements RetailerDao{
 	@Override
 	@Transactional
 	public Retailer registerRetailer(Retailer retailer) {
-		// TODO Auto-generated method stub
-		System.out.println("Inside Retailer Dao");
 		em.persist(retailer);
 		return retailer;
 	}
 
 	@Override
 	public int updateRetProfile(Retailer retailer) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public List<Retailer> getRetailer() {
-		// TODO Auto-generated method stub
 		Query qry=em.createQuery("Select r from Retailer r");
 		List<Retailer> retailerList=qry.getResultList();
 		return retailerList;
@@ -48,7 +44,7 @@ public class RetailerDaoImpl implements RetailerDao{
 		List<Retailer> RetailerList = qr.getResultList();
 		System.out.println(RetailerList);
 		
-		if(RetailerList.size()==0) {
+		if(RetailerList.size()==0) {//retailer not exists with same mail
 			return new Retailer();
 		}else {
 			Retailer temp = RetailerList.get(0);

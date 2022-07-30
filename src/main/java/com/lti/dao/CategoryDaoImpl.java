@@ -21,10 +21,7 @@ public class CategoryDaoImpl implements CategoryDao{
 	
 	@Override
 	@Transactional
-	public Category addCategory(Category c) {
-		// TODO Auto-generated method stub
-		
-		System.out.println(" Inside Dao method");		
+	public Category addCategory(Category c) {	
 		em.persist(c);	
 		return c;
 	}

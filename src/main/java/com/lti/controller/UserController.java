@@ -27,9 +27,7 @@ public class UserController {
 	@Autowired
 	UserService service;
 	
-
-	///localhost:8090/user-api/register-user
-	
+	//http://localhost:8090/user-api/register-user
 	@PostMapping("/register-user")
 	 public ResponseEntity<?>  registerUser(@RequestBody User u)
 	 {
@@ -39,7 +37,7 @@ public class UserController {
 		 
 		 
 		 
-		 if(exists.getId()!=0) {
+		 if(exists.getUser_id()!=0) {
 			 return ResponseHandler.generateResponse("User Already Exixts", HttpStatus.CONFLICT,u);
 			 //return new ResponseEntity<>("User Already Exixts", HttpStatus.CONFLICT);
 			 
@@ -54,19 +52,16 @@ public class UserController {
 	 }
 	
 	
-	// localhost:8090/user-api/login-user
 	
+	//http://localhost:8090/user-api/login-user
 	@PostMapping("/login-user")
 	 public ResponseEntity<?> loginUser(@RequestBody User u)
 	 {
 		
-		
 		User exists = service.userEmailExist(u.getEmail());
 		
-		System.out.println("user exists:"+exists.getPassword());
-		System.out.println("body user:"+u.getPassword());
-		
-		if(exists.getId()!=0) {
+		//check for user
+		if(exists.getUser_id()!=0) {
 			// user found
 			//check password
 			if(u.getPassword().equals(exists.getPassword())) {
@@ -89,25 +84,6 @@ public class UserController {
 	    
 	 }
 	
-	
-	
-	
-	@GetMapping("/login")
-	 public ResponseEntity<?> login()
-	 {
-		 //System.out.println("from postman : "+u);
-	     //User user = service.registerUser(u);
-		User u = new User();
-		List<User> uuu = new ArrayList<User>();
-		
-		
-		uuu.add(u);
-		uuu.add(u);
-		uuu.add(u);
-		
-		return ResponseHandler.generateResponse("Successfully added data!", HttpStatus.OK, uuu);
-	    
-	 }
 	
 	
 }

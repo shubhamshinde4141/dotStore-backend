@@ -16,8 +16,6 @@ import com.lti.beans.Category;
 import com.lti.responsemanager.ResponseHandler;
 import com.lti.services.CategoryService;
 
-
-
 @CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/category-api")
@@ -30,7 +28,6 @@ public class CategoryController {
 	@PostMapping("/add-category")
 	public ResponseEntity<?> addCategory(@RequestBody Category c)
 	{
-		System.out.println("Inside Controller");
 		Category Id=service.addCategory(c);
 		return ResponseHandler.generateResponse("Category Created", HttpStatus.OK,Id);
 	}

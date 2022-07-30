@@ -16,16 +16,9 @@ public class UserServiceImpl implements UserService {
 	
 	
 	@Override
-	public User registerUser(User u) {
-		// TODO Auto-generated method stub
-		
-		System.out.println("In user Service : "+u);
-		
+	public User registerUser(User u) {		
 		//call dao
-		User user = dao.registerUser(u);
-		
-		System.out.println(user);
-		
+		User user = dao.registerUser(u);		
 		return user;
 	}
 
@@ -33,14 +26,9 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User loginUser(User u) {
-		
-		System.out.println("In user Service : "+u);
-		
+	
 		//call dao
-		User user = dao.registerUser(u);
-		
-		System.out.println(user);
-		
+		User user = dao.registerUser(u);		
 		return user;
 	}
 
@@ -48,7 +36,6 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User userEmailExist(String email) {
-		// TODO Auto-generated method stub
 		User userExist = dao.userEmailExist(email); 
 		return userExist;
 	}

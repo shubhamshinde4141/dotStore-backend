@@ -16,13 +16,11 @@ public class CategoryServiceImpl implements CategoryService{
 	
 	@Override
 	public Category addCategory(Category c) {
-		// TODO Auto-generated method stub
 		return dao.addCategory(c);
 	}
 
 	@Override
 	public List<Category> getCategoryList() {
-		// TODO Auto-generated method stub
 		return dao.getCategoryList();
 	}
 

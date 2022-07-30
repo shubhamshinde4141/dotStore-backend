@@ -29,29 +29,26 @@ public class ProductController {
 	@Autowired
 	ProductService service;
 	
-	
+	//http://localhost:8090/product-api/add-product
 	@PostMapping("/add-product")
 	public ResponseEntity<?> addProduct(@RequestBody Product c)
 	{
-		System.out.println("Inside Controller : "+c);
 		Product pp =service.addProduct(c);
 		return ResponseHandler.generateResponse("Product Created", HttpStatus.OK,pp);
 	}
 	
-	
+	//http://localhost:8090/product-api/get-all-product
 	@GetMapping("/get-all-product")
 	public ResponseEntity<?> getAllProduct()
 	{
-		System.out.println("Inside Controller : ");
 		List<Product> pp =service.getAllProducts();
 		return ResponseHandler.generateResponse("All Products", HttpStatus.OK,pp);
 	}
 	
-	
+	//http://localhost:8090/product-api/get-product-byid/{id}
 	@GetMapping("/get-product-byid/{id}")
 	public ResponseEntity<?> getProductById(@PathVariable int id)
 	{
-		System.out.println("Inside Controller : ");
 		Product pp =service.getProductById(id);
 		return ResponseHandler.generateResponse("Product Detail", HttpStatus.OK,pp);
 	}
@@ -59,7 +56,6 @@ public class ProductController {
 	@GetMapping("/get-product-bycategory/{category_id}")
 	public ResponseEntity<?> getProductByCategory(@PathVariable int category_id)
 	{
-		System.out.println("Inside Controller : ");
 		List<Product> pp =service.getProductsByCategory(category_id);
 		return ResponseHandler.generateResponse("Product By Category", HttpStatus.OK,pp);
 	}
@@ -68,14 +64,11 @@ public class ProductController {
 	@PutMapping("/update-product/{id}")
 	public ResponseEntity<?> updateProduct(@PathVariable int id,@RequestBody Product c)
 	{
-		System.out.println("Inside Controller : "+c);
 		// first get Product by id 
 		Product pp1 =service.getProductById(id);
 		
 		// then update all fields with new object
 		Product pp =service.updateProduct(id, pp1);
-		System.out.println("After Update : "+pp);
-		//Product pp =service.addProduct(c);
 		return ResponseHandler.generateResponse("Product Updated", HttpStatus.OK,pp);
 	}
 	

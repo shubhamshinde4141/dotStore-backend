@@ -1,7 +1,5 @@
 package com.lti.beans;
 
-import java.time.LocalDate;
-
 import javax.persistence.*;
 
 @Entity
@@ -11,8 +9,8 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE , generator="USERSEQ")
 	@SequenceGenerator(name="USERSEQ", sequenceName="userseq",allocationSize=1)
-	@Column(name="ID")
-	private int id;
+	@Column(name="USER_ID")
+	private int user_id;
 	
 	@Column(name="NAME", length = 20)
 	private String name;
@@ -38,12 +36,30 @@ public class User {
 	@Column(name="DOB",length= 15)
 	private String dob;
 
-	public int getId() {
-		return id;
+	public User(int user_id, String name, String email, String phone, String password, String token, String address,
+			String gender, String dob) {
+		super();
+		this.user_id = user_id;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.password = password;
+		this.token = token;
+		this.address = address;
+		this.gender = gender;
+		this.dob = dob;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public User() {
+		super();
+	}
+
+	public int getUser_id() {
+		return user_id;
+	}
+
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 
 	public String getName() {
@@ -110,30 +126,13 @@ public class User {
 		this.dob = dob;
 	}
 
-	public User(int id, String name, String email, String phone, String password, String token, String address,
-			String gender, String dob) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.email = email;
-		this.phone = phone;
-		this.password = password;
-		this.token = token;
-		this.address = address;
-		this.gender = gender;
-		this.dob = dob;
-	}
-
-	public User() {
-		super();
-	}
-
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", password=" + password
-				+ ", token=" + token + ", address=" + address + ", gender=" + gender + ", dob=" + dob + "]";
+		return "User [user_id=" + user_id + ", name=" + name + ", email=" + email + ", phone=" + phone + ", password="
+				+ password + ", token=" + token + ", address=" + address + ", gender=" + gender + ", dob=" + dob + "]";
 	}
 
+	
 //	@Column(name="CREATEDAT")
 //	private LocalDate createdAt;
 //	
