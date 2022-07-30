@@ -9,7 +9,7 @@ import com.lti.beans.Category;
 
 public interface CategoryService {
 	
-	int addCategory(Category c);
+	Category addCategory(Category c);
 	List<Category> getCategoryList();
 	
 

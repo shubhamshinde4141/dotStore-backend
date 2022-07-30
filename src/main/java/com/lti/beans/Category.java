@@ -1,6 +1,5 @@
-package com.lti.beans;
 
-import java.time.LocalDate;
+package com.lti.beans;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,46 +10,38 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Category")
+@Table(name="Categories")
 public class Category {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE , generator="CATSEQ")
 	@SequenceGenerator(name="CATSEQ", sequenceName="catseq",allocationSize=1)
-	@Column(name="ID")
-	private int id;
+	@Column(name="CATEGORY_ID")
+	private int category_id;
 	
 	@Column(name="NAME")
 	private String name ;
 	
 	@Column(name="description")
 	private String description;
-	
-//	@Column(name="createdAt")
-//	private LocalDate createdAt;
-//	
-//	@Column(name="updatedAt")
-//	private LocalDate updatedAt;
 
 	public Category() {
 		super();
 	}
 
-	public Category(int id, String name, String description) {
+	public Category(int category_id, String name, String description) {
 		super();
-		this.id = id;
+		this.category_id = category_id;
 		this.name = name;
 		this.description = description;
-//		this.createdAt = createdAt;
-//		this.updatedAt = updatedAt;
 	}
 
-	public int getId() {
-		return id;
+	public int getCategory_id() {
+		return category_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setCategory_id(int category_id) {
+		this.category_id = category_id;
 	}
 
 	public String getName() {
@@ -69,26 +60,18 @@ public class Category {
 		this.description = description;
 	}
 
-//	public LocalDate getCreatedAt() {
-//		return createdAt;
-//	}
-//
-//	public void setCreatedAt(LocalDate createdAt) {
-//		this.createdAt = createdAt;
-//	}
-//
-//	public LocalDate getUpdatedAt() {
-//		return updatedAt;
-//	}
-//
-//	public void setUpdatedAt(LocalDate updatedAt) {
-//		this.updatedAt = updatedAt;
-//	}
-
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + ", description=" + description + "]";
-	} 
+		return "Category [category_id=" + category_id + ", name=" + name + ", description=" + description + "]";
+	}
+	
+//	@Column(name="createdAt")
+//	private LocalDate createdAt;
+//	
+//	@Column(name="updatedAt")
+//	private LocalDate updatedAt;
+
+	
 	
 	
 	

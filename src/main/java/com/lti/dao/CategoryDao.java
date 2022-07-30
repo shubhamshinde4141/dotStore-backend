@@ -6,6 +6,6 @@ import com.lti.beans.Category;
 
 public interface CategoryDao {
 	
-	int addCategory(Category c);
+	Category addCategory(Category c);
 	List<Category> getCategoryList();
 }

@@ -21,11 +21,11 @@ public class CategoryDaoImpl implements CategoryDao {
 
 	@Override
 	@Transactional
-	public int addCategory(Category c) {
+	public Category addCategory(Category c) {
 		// TODO Auto-generated method stub
 		System.out.println(" Inside Dao method");		
 		em.persist(c);	
-		return c.getId();
+		return c;
 	
 	}
 

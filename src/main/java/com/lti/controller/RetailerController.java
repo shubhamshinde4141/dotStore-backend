@@ -46,7 +46,7 @@ public class RetailerController {
 		 
 		 
 		 
-		 if(exists.getId()!=0) {
+		 if(exists.getRetailer_id()!=0) {
 			 return ResponseHandler.generateResponse("Retailer Already Exixts", HttpStatus.CONFLICT,r);
 			 //return new ResponseEntity<>("User Already Exixts", HttpStatus.CONFLICT);
 			 
@@ -72,7 +72,7 @@ public class RetailerController {
 		System.out.println("Retailer exists:"+exists.getPassword());
 		System.out.println("body user:"+r.getPassword());
 		
-		if(exists.getId()!=0) {
+		if(exists.getRetailer_id()!=0) {
 			// user found
 			//check password
 			if(r.getPassword().equals(exists.getPassword())) {

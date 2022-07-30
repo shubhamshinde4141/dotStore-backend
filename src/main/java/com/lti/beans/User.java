@@ -8,10 +8,10 @@
 //@Table(name="user")
 //public class User {
 //
-////	@Id
-////	@GeneratedValue(strategy=GenerationType.SEQUENCE , generator="USERSEQ")
-////	@SequenceGenerator(name="USERSEQ", sequenceName="userseq",allocationSize=1)
-////	@Column(name="ID")
+//	@Id
+//	@GeneratedValue(strategy=GenerationType.SEQUENCE , generator="USERSEQ")
+//	@SequenceGenerator(name="USERSEQ", sequenceName="userseq",allocationSize=1)
+//	@Column(name="ID")
 //	private int id;
 //	
 //	//@Column(name="NAME", length = 20)

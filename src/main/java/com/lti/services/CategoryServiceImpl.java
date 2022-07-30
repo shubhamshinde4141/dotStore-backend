@@ -16,7 +16,7 @@ public class CategoryServiceImpl implements CategoryService{
 	CategoryDao dao;
 
 	@Override
-	public int addCategory(Category c) {
+	public Category addCategory(Category c) {
 		// TODO Auto-generated method stub
 		return dao.addCategory(c);
 	}
