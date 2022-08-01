@@ -58,4 +58,20 @@ public class RetailerDaoImpl implements RetailerDao{
 		
 	}
 
+	@Override
+	public Retailer getRetailerById(int id) {
+		TypedQuery<Retailer> qr = em.createQuery("select r from Retailer r where r.retailer_id=:id",Retailer.class);
+		qr.setParameter("id", id);
+		List<Retailer> RetailerList = qr.getResultList();
+		System.out.println(RetailerList);
+		
+		if(RetailerList.size()==0) {
+			return new Retailer();
+		}else {
+			Retailer temp = RetailerList.get(0);
+
+			return temp;
+		}
+	}
+
 }

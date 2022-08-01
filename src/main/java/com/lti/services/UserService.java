@@ -9,6 +9,7 @@ public interface UserService {
 
 	public User userEmailExist(String email);
 	public User registerUser(User u);
+	public User getUserById(int id);
 	public User loginUser(User u);
 	
 }

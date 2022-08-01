@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.lti.beans.Product;
 import com.lti.beans.User;
 
 
@@ -50,7 +51,7 @@ public class UserDaoImpl implements UserDao {
 
 
 	@Override
-	public User userEmailExist(String email) {
+	public User userEmailExist(String email){
 		// TODO Auto-generated method stub
 	
 		TypedQuery<User> qr = em.createQuery("select u from User u where u.email=:email",User.class);
@@ -71,6 +72,21 @@ public class UserDaoImpl implements UserDao {
 		
 		
 		
+	}
+
+
+	@Override
+	public User getUserById(int id) {
+		TypedQuery<User> qr = em.createQuery("select u from User u where u.id=:id",User.class);
+		qr.setParameter("id", id);
+		List<User> userList = qr.getResultList();
+		
+		if(userList.size()>0) {
+			System.out.println(userList);
+			return userList.get(0);
+		}else {
+			return new User();
+		}
 	}
 
 }

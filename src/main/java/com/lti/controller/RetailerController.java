@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,7 +37,7 @@ public class RetailerController {
 		 
 		 
 		 
-		 if(exists.getId()!=0) {
+		 if(exists.getRetailer_id()!=0) {
 			 return ResponseHandler.generateResponse("Retailer Already Exixts", HttpStatus.CONFLICT,r);
 			 //return new ResponseEntity<>("User Already Exixts", HttpStatus.CONFLICT);
 			 
@@ -62,12 +63,12 @@ public class RetailerController {
 		System.out.println("Retailer exists:"+exists.getPassword());
 		System.out.println("body user:"+r.getPassword());
 		
-		if(exists.getId()!=0) {
+		if(exists.getRetailer_id()!=0) {
 			// user found
 			//check password
 			if(r.getPassword().equals(exists.getPassword())) {
 				
-				return ResponseHandler.generateResponse("User Login Successful", HttpStatus.OK,exists);
+				return ResponseHandler.generateResponse("Retailer Login Successful", HttpStatus.OK,exists);
 			}
 			else {
 				//password matched 
@@ -78,12 +79,23 @@ public class RetailerController {
 		 }
 		 else {
 			 //user not found
-			 return ResponseHandler.generateResponse("User Not Found", HttpStatus.NOT_FOUND,r);
+			 return ResponseHandler.generateResponse("Retailer Not Found", HttpStatus.NOT_FOUND,r);
 			 
 		 }
 	     	    
 	    
 	 }
 		
-			
+	@GetMapping("/get-retailer-byId/{id}")
+	public ResponseEntity<?> getRetailerById(@PathVariable int id){
+		
+		Retailer rr = service.getRetailerById(id);
+		
+		if(rr.getRetailer_id()==0) {
+			return ResponseHandler.generateResponse("Retailer Not Found", HttpStatus.NOT_FOUND,rr);
+		}else {
+			return ResponseHandler.generateResponse("Retailer Detail", HttpStatus.OK,rr);
+		}
+	}
+	
 }

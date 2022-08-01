@@ -11,4 +11,6 @@ public interface ProductService {
 	public List<Product> getAllProducts();
 	public List<Product> getProductsByCategory(int category_id);
 	public Product updateProduct(int id,Product p);
+
+	public List<Product> getProductsByRetailerId(int retailer_id);
 }

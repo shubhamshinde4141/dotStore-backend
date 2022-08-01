@@ -47,6 +47,14 @@ public class ProductController {
 		return ResponseHandler.generateResponse("All Products", HttpStatus.OK,pp);
 	}
 	
+//	@GetMapping("/get-all-product")
+//	public List<Product> getAllProduct()
+//	{
+//		System.out.println("Inside Controller : ");
+//		List<Product> pp =service.getAllProducts();
+//		return pp;
+//		//return ResponseHandler.generateResponse("All Products", HttpStatus.OK,pp);
+//	}
 	
 	@GetMapping("/get-product-byid/{id}")
 	public ResponseEntity<?> getProductById(@PathVariable int id)
@@ -72,14 +80,54 @@ public class ProductController {
 		// first get Product by id 
 		Product pp1 =service.getProductById(id);
 		
+		
+		System.out.println("Product by id : "+pp1);
+		
+		c.setProduct_id(pp1.getProduct_id());
+	
+//		if(c.getName()==null) {
+//			c.setName(pp1.getName());
+//		}
+//		if(c.getDescription()==null) {
+//			c.setDescription(pp1.getDescription());
+//		}
+//		if(c.getPrice()==0) {
+//			c.setPrice(pp1.getPrice());
+//		}
+//		if(c.getStock()==0) {
+//			c.setStock(pp1.getStock());
+//		}
+//		if(c.getImageUrl()==null) {
+//			c.setImageUrl(pp1.getImageUrl());
+//		}
+//		if(c.getCategory().getId()==0) {
+//			//c.setCategory(pp1.getCategory());
+//			c.setCategory(pp1.getCategory());
+//			
+//		}
+//		if(c.getRetailer().getId()==0) {
+//			c.setRetailer(pp1.getRetailer());
+//		}
+		
+		
+		System.out.println("After update c : "+ c);
+		
 		// then update all fields with new object
-		Product pp =service.updateProduct(id, pp1);
+		Product pp =service.updateProduct(id, c);
 		System.out.println("After Update : "+pp);
 		//Product pp =service.addProduct(c);
 		return ResponseHandler.generateResponse("Product Updated", HttpStatus.OK,pp);
 	}
 	
 	
+	
+	@GetMapping("/get-product-by-retailerid/{retailer_id}")
+	public ResponseEntity<?> getProductByRetailerid(@PathVariable int retailer_id)
+	{
+		System.out.println("Inside Controller : ");
+		List<Product> pp =service.getProductsByRetailerId(retailer_id);
+		return ResponseHandler.generateResponse("Product By Retailer ID", HttpStatus.OK,pp);
+	}
 	
 	
 	

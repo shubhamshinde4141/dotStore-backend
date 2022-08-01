@@ -14,6 +14,8 @@ import com.lti.beans.Category;
 import com.lti.beans.Product;
 import com.lti.beans.User;
 
+import oracle.net.aso.e;
+
 @Repository
 public class ProductDaoImpl implements ProductDao {
 
@@ -26,8 +28,12 @@ public class ProductDaoImpl implements ProductDao {
 	@Transactional
 	public Product addProduct(Product p) {
 		// TODO Auto-generated method stub
-		System.out.println(" Inside Dao method");		
-		em.persist(p);	
+		System.out.println(" Inside Dao method");
+		
+		
+		
+		em.persist(p);
+		
 		return p;
 	}
 
@@ -78,16 +84,32 @@ public class ProductDaoImpl implements ProductDao {
 
 
 	@Override
+	@Transactional
 	public Product updateProduct(int id, Product p) {
 		// TODO Auto-generated method stub
-		System.out.println(" Inside Dao method");	
+		System.out.println(" Inside Dao method : "+p);	
 		Product pp = em.merge(p);
+		//TypedQuery<Product> qr = em.createQuery("update Product p where p.product_id=:id",Product.class);
+		//qr.setParameter("id", id);
+		
+		
 		//em.persist(p);	
 		return pp;
 		
 		
 		
 		
+	}
+
+
+
+	@Override
+	public List<Product> getProductsByRetailerId(int retailer_id) {
+		TypedQuery<Product> qr = em.createQuery("select p from Product p where p.retailer.id=:retailer_id",Product.class);
+		qr.setParameter("retailer_id", retailer_id);
+		List<Product> productList = qr.getResultList();
+		System.out.println(productList);
+		return productList;
 	}
 
 

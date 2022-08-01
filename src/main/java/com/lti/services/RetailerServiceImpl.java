@@ -41,4 +41,10 @@ public class RetailerServiceImpl implements RetailerService{
 		
 	}
 
+	@Override
+	public Retailer getRetailerById(int id) {
+		// TODO Auto-generated method stub
+		return dao.getRetailerById(id);
+	}
+
 }

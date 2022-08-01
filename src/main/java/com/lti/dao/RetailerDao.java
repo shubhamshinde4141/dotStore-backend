@@ -10,5 +10,6 @@ public interface RetailerDao {
 //	loginRetailer()	
 	int updateRetProfile(Retailer retailer);	
 	List<Retailer> getRetailer();	
+	public Retailer getRetailerById(int id);
 	public Retailer retailerEmailExist(String email);
 }

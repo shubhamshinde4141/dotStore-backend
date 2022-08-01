@@ -8,12 +8,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.lti.beans.Product;
 import com.lti.beans.User;
 import com.lti.responsemanager.ResponseHandler;
 import com.lti.services.UserService;
@@ -40,7 +41,7 @@ public class UserController {
 		 
 		 
 		 if(exists.getId()!=0) {
-			 return ResponseHandler.generateResponse("User Already Exixts", HttpStatus.CONFLICT,u);
+			 return ResponseHandler.generateResponse("User Already Exisxts", HttpStatus.CONFLICT,u);
 			 //return new ResponseEntity<>("User Already Exixts", HttpStatus.CONFLICT);
 			 
 		 }
@@ -59,7 +60,7 @@ public class UserController {
 	@PostMapping("/login-user")
 	 public ResponseEntity<?> loginUser(@RequestBody User u)
 	 {
-		
+	
 		
 		User exists = service.userEmailExist(u.getEmail());
 		
@@ -88,6 +89,21 @@ public class UserController {
 	     	    
 	    
 	 }
+	
+	@GetMapping("/get-user-byid/{id}")
+	public ResponseEntity<?> getUserById(@PathVariable int id)
+	{
+		System.out.println("Inside Controller : ");
+		User pp =service.getUserById(id);
+		
+		if(pp.getId()==0) {
+			return ResponseHandler.generateResponse("User Not Found", HttpStatus.NOT_FOUND,pp);
+		}else {
+			return ResponseHandler.generateResponse("User Detail", HttpStatus.OK,pp);
+		}
+		
+		
+	}
 	
 	
 	

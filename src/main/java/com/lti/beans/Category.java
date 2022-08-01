@@ -9,7 +9,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Category")
+@Table(name="Categories")
 public class Category {
 	
 	@Id
@@ -23,32 +23,13 @@ public class Category {
 	
 	@Column(name="description")
 	private String description;
-	
-//	@Column(name="createdAt")
-//	private LocalDate createdAt;
-//	
-//	@Column(name="updatedAt")
-//	private LocalDate updatedAt;
 
-	public Category() {
-		super();
-	}
-
-	public Category(int id, String name, String description) {
-		super();
-		this.category_id = id;
-		this.name = name;
-		this.description = description;
-//		this.createdAt = createdAt;
-//		this.updatedAt = updatedAt;
-	}
-
-	public int getId() {
+	public int getCategory_id() {
 		return category_id;
 	}
 
-	public void setId(int id) {
-		this.category_id = id;
+	public void setCategory_id(int category_id) {
+		this.category_id = category_id;
 	}
 
 	public String getName() {
@@ -67,26 +48,23 @@ public class Category {
 		this.description = description;
 	}
 
-//	public LocalDate getCreatedAt() {
-//		return createdAt;
-//	}
-//
-//	public void setCreatedAt(LocalDate createdAt) {
-//		this.createdAt = createdAt;
-//	}
-//
-//	public LocalDate getUpdatedAt() {
-//		return updatedAt;
-//	}
-//
-//	public void setUpdatedAt(LocalDate updatedAt) {
-//		this.updatedAt = updatedAt;
-//	}
-
 	@Override
 	public String toString() {
-		return "Category [id=" + category_id + ", name=" + name + ", description=" + description + "]";
-	} 
+		return "Category [category_id=" + category_id + ", name=" + name + ", description=" + description + "]";
+	}
+
+	public Category(int category_id, String name, String description) {
+		super();
+		this.category_id = category_id;
+		this.name = name;
+		this.description = description;
+	}
+
+	public Category() {
+		super();
+	}
+	
+
 	
 	
 	
